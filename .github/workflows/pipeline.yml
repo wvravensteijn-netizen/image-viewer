@@ -23,4 +23,4 @@ jobs:
       if: github.ref_name == 'main'
       with:
         name: compiled-binary
-        path: bin/image-viewer.exe
+        path: build/**/*.exe
