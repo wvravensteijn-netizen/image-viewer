@@ -18,3 +18,9 @@ jobs:
       run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
     - name: Build with Ninja
       run: cmake --build build --parallel
+    - name: Upload Compiled Artifacts
+      uses: actions/upload-artifact@v4
+      if: github.ref_name == 'main'
+      with:
+        name: compiled-binary
+        path: build/image-viewer.exe
