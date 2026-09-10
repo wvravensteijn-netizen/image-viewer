@@ -10,6 +10,7 @@ add_executable(image-viewer
     src/app_state.c
     src/viewer_core.c
     src/viewer_ui.c
+    src/resource.rc
 )
 
 # Include directories

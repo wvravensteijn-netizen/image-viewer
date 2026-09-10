@@ -1,4 +1,5 @@
 #include "app.h"
+#include "resource.h"
 
 int WINAPI WinMain(HINSTANCE instance, HINSTANCE prevInstance, LPSTR cmdLine, int showCmd) {
   (void)prevInstance;
@@ -26,6 +27,9 @@ int WINAPI WinMain(HINSTANCE instance, HINSTANCE prevInstance, LPSTR cmdLine, in
   wc.lpszClassName = "ImageViewerWindowClass";
   wc.hbrBackground = g_backgroundBrush;
   wc.hCursor = LoadCursorA(NULL, IDC_ARROW);
+
+  wc.hIcon = LoadIcon(instance, MAKEINTRESOURCE(IDI_MYICON));      // Large icon (Alt+Tab)
+  wc.hIconSm = LoadIcon(instance, MAKEINTRESOURCE(IDI_MYICON)); 
 
   if (RegisterClassExA(&wc) == 0) {
     if (g_imageBitmap != NULL) {
