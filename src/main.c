@@ -5,8 +5,8 @@ int WINAPI WinMain(HINSTANCE instance, HINSTANCE prevInstance, LPSTR cmdLine, in
   (void)prevInstance;
   (void)cmdLine;
 
-  // HRESULT comResult = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
-  // BOOL shouldUninitializeCom = SUCCEEDED(comResult);
+  HRESULT comResult = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
+  BOOL shouldUninitializeCom = SUCCEEDED(comResult);
 
   g_backgroundBrush = CreateSolidBrush(RGB(0x1d, 0x1d, 0x1d));
 
@@ -141,6 +141,8 @@ int WINAPI WinMain(HINSTANCE instance, HINSTANCE prevInstance, LPSTR cmdLine, in
   ClearWindowIcons(NULL);
   FreeImageList();
   DeleteObject(g_backgroundBrush);
+  if (shouldUninitializeCom) CoUninitialize();
+
   if (accelTable != NULL) DestroyAcceleratorTable(accelTable);
   return (int)msg.wParam;
 }
